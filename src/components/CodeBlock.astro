@@ -1,0 +1,9 @@
+---
+import { Code } from "astro:components";
+
+const { c, lang } = Astro.props;
+---
+
+<div class="not-prose">
+  <Code code={c} lang={lang} theme="catppuccin-mocha" class="p-5 rounded-xl text-base/5.5" />
+</div>

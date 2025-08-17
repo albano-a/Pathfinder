@@ -1,0 +1,33 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import PostCard from "../components/PostCard.svelte";
+
+const posts = Object.values(import.meta.glob("./posts/*.mdx", { eager: true }));
+
+function parseDate(dateString: string) {
+  return new Date(dateString);
+}
+---
+
+<MainLayout title="Blog">
+  <h1>This is the Blog page</h1>
+  <div class="grid grid-cols-3 gap-4">
+    {
+      posts
+        .filter((post) => (post as any).frontmatter?.published !== false)
+        .sort(
+          (a, b) =>
+            parseDate((b as any).frontmatter.date).getTime() -
+            parseDate((a as any).frontmatter.date).getTime()
+        )
+        .map((post) => (
+          <PostCard
+            url={(post as any).url}
+            title={(post as any).frontmatter.title}
+            description={(post as any).frontmatter.description}
+            date={(post as any).frontmatter.date}
+          />
+        ))
+    }
+  </div>
+</MainLayout>

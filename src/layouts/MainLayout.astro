@@ -1,0 +1,26 @@
+---
+import "../styles/global.css";
+
+import Navbar from "../components/Navbar.svelte";
+import Footer from "../components/Footer.svelte";
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="font-sans dark:bg-gray-950 dark:text-gray-200">
+    <Navbar />
+    <div class="">
+      <main class="mx-auto max-w-5xl p-4 mt-5">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

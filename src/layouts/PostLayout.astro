@@ -1,0 +1,34 @@
+---
+import "../styles/global.css";
+import MainLayout from "./MainLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<MainLayout title={frontmatter.title} class="">
+  <!-- Title and Frontmatter -->
+
+  <div class="flex flex-col justify-center text-center">
+    <h1 class="text-6xl font-black my-5">{frontmatter.title}</h1>
+    <hr class="text-indigo-900" />
+    <div class="my-7">
+      <h3 class="text-xl italic mt-2 mb-4">
+        {frontmatter.description}
+      </h3>
+      <p class="text-lg">{frontmatter.author}</p>
+      <p class="text-lg">{frontmatter.date}</p>
+    </div>
+  </div>
+  <hr class="text-indigo-900 mb-5" />
+  <article
+    class="max-w-none text-justify prose prose-headings:font-serif prose-img:rounded-xl prose-lg dark:prose-invert prose-slate prose-p:text-xl prose-headings:my-3 prose-blockquote:text-orange-300 prose-a:text-blue-500 prose-a:hover:text-blue-400"
+  >
+    <slot />
+  </article>
+</MainLayout>
+
+<!-- <style>
+  * {
+    all: revert;
+  }
+</style> -->
