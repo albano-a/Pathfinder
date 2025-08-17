@@ -11,17 +11,26 @@ const { frontmatter } = Astro.props;
   <div class="flex flex-col justify-center text-center">
     <h1 class="text-6xl font-black my-5">{frontmatter.title}</h1>
     <hr class="text-indigo-900" />
-    <div class="my-7">
+    <div>
       <h3 class="text-xl italic mt-2 mb-4">
         {frontmatter.description}
       </h3>
       <p class="text-lg">{frontmatter.author}</p>
       <p class="text-lg">{frontmatter.date}</p>
     </div>
+    <div class="flex flex-row flex-wrap space-x-3 justify-center my-4">
+      {
+        frontmatter.tags?.map((tag: string) => (
+          <a href=`/tags/${tag}` class="rounded-sm bg-indigo-600 text-white font-medium p-1.5 mt-4 text-sm hover:bg-indigo-500">
+            {tag}
+          </a>
+        ))
+      }
+    </div>
   </div>
   <hr class="text-indigo-900 mb-5" />
   <article
-    class="max-w-none text-justify prose prose-headings:font-serif prose-img:rounded-xl prose-lg dark:prose-invert prose-slate prose-p:text-xl prose-headings:my-3 prose-blockquote:text-orange-300 prose-a:text-blue-500 prose-a:hover:text-blue-400"
+    class="max-w-none text-justify prose prose-headings:font-serif prose-img:rounded-xl prose-lg dark:prose-invert prose-slate prose-p:text-2xl prose-headings:my-3 prose-blockquote:text-orange-300 prose-a:text-blue-500 prose-a:hover:text-blue-400"
   >
     <slot />
   </article>

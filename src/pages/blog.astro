@@ -9,9 +9,8 @@ function parseDate(dateString: string) {
 }
 ---
 
-<MainLayout title="Blog">
-  <h1>This is the Blog page</h1>
-  <div class="grid grid-cols-3 gap-4">
+<MainLayout title="Blog | Pathfinder">
+  <div class="grid md:grid-cols-3 gap-4">
     {
       posts
         .filter((post) => (post as any).frontmatter?.published !== false)
@@ -26,6 +25,7 @@ function parseDate(dateString: string) {
             title={(post as any).frontmatter.title}
             description={(post as any).frontmatter.description}
             date={(post as any).frontmatter.date}
+            tags={(post as any).frontmatter.tags}
           />
         ))
     }

@@ -6,17 +6,24 @@
     { href: "/projects", label: "Projects" },
     { href: "/blog", label: "Blog" },
   ];
+
+  let mobileMenuOpen = $state(false);
+
+  function toggleMobileMenu() {
+    mobileMenuOpen = !mobileMenuOpen;
+  }
 </script>
 
-<header
-  class="bg-white dark:bg-gray-950 border-2 border-gray-900 top-16 z-50 mx-16 rounded-lg"
->
-  <nav class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-    <a href="/" class="text-2xl font-bold text-gray-200 no-underline"
-      >Pathfinder</a
-    >
+<header class="bg-white dark:bg-gray-950 top-16 z-50 mx-4 md:mx-16 rounded-lg">
+  <nav
+    class="flex justify-between items-center px-4 md:px-8 py-4 md:max-w-6xl max-w-5xl mx-auto"
+  >
+    <a href="/" class="text-2xl font-bold text-gray-200 no-underline">
+      Pathfinder
+    </a>
 
-    <ul class="flex list-none m-0 p-0 gap-8">
+    <!-- Navigation menu -->
+    <ul class="flex list-none m-0 p-0 gap-4 md:gap-8">
       {#each navItems as item}
         <li>
           <a
