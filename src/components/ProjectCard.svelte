@@ -26,7 +26,7 @@
     <div class="flex flex-row flex-wrap gap-2 mt-4 overflow-hidden">
       {#each tags as tag}
         <div
-          class="rounded-sm bg-indigo-600 text-white font-medium px-2 py-1 text-sm whitespace-nowrap overflow-hidden text-ellipsis max-w-32"
+          class="rounded-sm bg-amber-600 text-white font-medium px-2 py-1 text-sm whitespace-nowrap overflow-hidden text-ellipsis max-w-32"
         >
           {tag}
         </div>

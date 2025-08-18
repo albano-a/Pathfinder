@@ -3,50 +3,27 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 import ProjectCard from "../components/ProjectCard.svelte";
 
-let GeofisicaHub = {
-  title: "GeofisicaHub",
-  description:
-    "GeofisicaHub is a website built by geophysicists for geophysicists",
-  url: "https://geofisicahub.me/",
-  tags: ["geophysics", "tools"],
-};
-let GeofisicaApp = {
-  title: "GeofisicaApp",
-  description:
-    "GeofisicaApp is a toolkit for Gephysicists and Geologists workflows",
-  url: "https://geofisica.streamlit.app/",
-  tags: ["geophysics", "tools", "geology"],
-};
-let Andromeda = {
-  title: "Andromeda",
-  description:
-    "Andromeda is a seismic inversion software built by GIECAR-UFF for the oil and gas company, Prio.",
-  url: "https://gcr.sites.uff.br/",
-  tags: ["seismic", "inversion", "software"],
-};
+import { projects } from "../scripts/project";
+
+
 ---
 
 <MainLayout title="Projects | Pathfinder">
-  <h1 class="text-centered text-3xl">Projects</h1>
-  <p class="text-centered text-lg font-medium">These are my projects. Some (almost all) are built only by me, and some are from GIECAR.</p>
-  <div class="grid md:grid-cols-3 gap-4 mt-9">
-    <ProjectCard
-      title={GeofisicaHub.title}
-      description={GeofisicaHub.description}
-      url={GeofisicaHub.url}
-      tags={GeofisicaHub.tags}
-    />
-    <ProjectCard
-      title={GeofisicaApp.title}
-      description={GeofisicaApp.description}
-      url={GeofisicaApp.url}
-      tags={GeofisicaApp.tags}
-    />
-    <ProjectCard
-      title={Andromeda.title}
-      description={Andromeda.description}
-      url={Andromeda.url}
-      tags={Andromeda.tags}
-    />
+  <div class="text-center">
+    <h1 class="font-bold text-3xl">Projects</h1>
+    <p class="text-lg font-medium">
+      These are my projects. Some (almost all) are built only by me, and some
+      are from GIECAR-UFF.
+    </p>
+  </div>
+    <div class="grid md:grid-cols-3 gap-4 mt-9">
+    {projects.map(p => (
+      <ProjectCard
+        title={p.title}
+        description={p.description}
+        url={p.url}
+        tags={p.tags}
+      />
+    ))}
   </div>
 </MainLayout>
