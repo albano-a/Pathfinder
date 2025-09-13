@@ -4,6 +4,7 @@ import Hero from "../components/Hero.svelte";
 import PostCard from "../components/PostCard.svelte";
 import ProjectCard from "../components/ProjectCard.svelte";
 import { projects } from "../scripts/project";
+import Greeting from "../components/Greeting.svelte";
 
 const posts = Object.values(import.meta.glob("./posts/*.mdx", { eager: true }));
 
@@ -22,8 +23,12 @@ function parseDate(dateString: string) {
     </div>
   </Hero>
 
-  <h1 class="text-7xl mt-10 text-center font-bold font-serif bg-gradient-to-r from-indigo-400 via-sky-500 to-indigo-400 bg-clip-text text-transparent px-2">Posts</h1>
-  <div class="grid md:grid-cols-3 gap-4 mt-9 ">
+  <h1
+    class="text-7xl mt-10 text-center font-bold font-serif bg-gradient-to-r from-indigo-400 via-sky-500 to-indigo-400 bg-clip-text text-transparent px-2"
+  >
+    Posts
+  </h1>
+  <div class="grid md:grid-cols-3 gap-4 mt-9">
     {
       posts
         .filter((post) => (post as any).frontmatter?.published !== false)
@@ -44,7 +49,11 @@ function parseDate(dateString: string) {
     }
   </div>
 
-  <h1 class="text-7xl mt-10 text-center font-bold font-serif bg-gradient-to-r from-indigo-400 via-sky-500 to-indigo-400 bg-clip-text text-transparent py-2">Projects</h1>
+  <h1
+    class="text-7xl mt-10 text-center font-bold font-serif bg-gradient-to-r from-indigo-400 via-sky-500 to-indigo-400 bg-clip-text text-transparent py-4"
+  >
+    Projects
+  </h1>
   <div class="grid md:grid-cols-3 gap-4 mt-9">
     {
       projects.map((p) => (
@@ -56,5 +65,9 @@ function parseDate(dateString: string) {
         />
       ))
     }
+  </div>
+  
+  <div class="pt-5">
+    <Greeting client:visible />
   </div>
 </MainLayout>
